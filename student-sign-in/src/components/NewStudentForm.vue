@@ -17,7 +17,7 @@
               <input id="name" class="form-control" v-model.trim="newStudentName">
           </div>
           <div class="form-group">
-              <label for="starID">Star ID:/label>
+              <label for="starID">Star ID:</label>
               <!-- TODO v-model newStarID -->
               <input id="starID" class="form-control" v-model.trim="newStarID">
           </div>

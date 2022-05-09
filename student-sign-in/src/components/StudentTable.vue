@@ -13,13 +13,12 @@
                     Each row will have a checkbox, bound to the app's data 
                     When the checkbox is checked/unchecked, the student will be signed in/out -->
                     <tr v-for="student in students" v-bind:key="student.starID" v-bind:class= "{ present: student.present, absent: !student.present }">
-                      <td> {{ student.name }}
-                        <td> {{ student.starID }}</td>
-                        <td> 
-                          <input type="checkbox" v-model="student.present" v-on:change="arrivedOrLeft(student)"> 
-                        </td>
+                      <td> {{ student.name }} </td>
+                      <td> {{ student.starID }}</td>
+                      <td> 
+                        <input type="checkbox" v-model="student.present" v-on:change="arrivedOrLeft(student)"> 
+                      </td>
                     </tr>
-
                   </table>
               </div>
         </div>

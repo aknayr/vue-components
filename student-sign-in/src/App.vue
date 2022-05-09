@@ -2,7 +2,7 @@
   <div id="app">
 
     <new-student-form v-on:student-added="newStudentAdded"></new-student-form>
-    <student-table></student-table>
+    <student-table v-bind:students="students"></student-table>
     <student-message></student-message>
     
   </div>
@@ -27,8 +27,10 @@ export default {
   },
   methods: {
     newStudentAdded (student) {
-      this.student.push(student)
-
+      this.students.push(student)
+      this.students.sort (function(student1, student2){
+        return student1.name.toLowerCase() > student2.name.toLowerCase() ? 1 : -1
+      })
     }
   }
 }
