@@ -1,11 +1,14 @@
 <template>
   <div class="hello">
+
+    <!-- template here -->
     
   </div>
 </template>
 
 <script>
 export default {
+  // create component here
   name: 'StudentSignIn',
   props: {
     msg: String
