@@ -1,9 +1,16 @@
 <template>
   <div id="app">
 
-    <new-student-form v-on:student-added="newStudentAdded"></new-student-form>
-    <student-table v-bind:students="students"></student-table>
-    <student-message></student-message>
+    <new-student-form 
+      v-on:student-added="newStudentAdded">
+    </new-student-form>
+    <student-table 
+      v-bind:students="students" 
+      v-on:student-arrived-or-left="studentArrivedOrLeft">
+    </student-table>
+    <student-message 
+      v-bind:student="mostRecentStudent">
+    </student-message>
     
   </div>
 </template>
@@ -22,7 +29,8 @@ export default {
   },
   data () {
     return {
-      students: []
+      students: [],
+      mostRecentStudent: {}
     }
   },
   methods: {
@@ -31,18 +39,27 @@ export default {
       this.students.sort (function(student1, student2){
         return student1.name.toLowerCase() > student2.name.toLowerCase() ? 1 : -1
       })
+    },
+    studentArrivedOrLeft (student, present) {
+      // find student in array of students
+      // update their present/absent attribute
+      let updateStudent = this.students.find( function(s) {
+        if(s.name === student.name && s.starID === student.starID)
+        {
+          return true
+        }
+      })
+      if (updateStudent){
+        updateStudent.present = present
+        this.mostRecentStudent = updateStudent
+      }
     }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
+@import "https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+
 </style>

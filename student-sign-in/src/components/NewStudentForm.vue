@@ -32,6 +32,7 @@
 export default {
   // create component here
   name: 'NewStudentForm',
+  emits: ['student-added'],
   data () {
     return {
       newStudentName: '',
@@ -45,11 +46,11 @@ export default {
 
         if (!this.newStudentName) 
         {
-          this.errors.push('Student Name is a required field.')
+          this.errors.push('Student Name is a required field')
         } 
         if (!this.newStarID) 
         {
-          this.errors.push('StarID is a required field.')
+          this.errors.push('StarID is a required field')
         }
         if (this.errors.length == 0)
         {
@@ -69,18 +70,21 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+
+.present {
+    color: gray;
+    font-style: italic;
+    background-color: lightgreen;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+
+.absent {
+    color: black;
+    font-weight: bold;
+    background-color: lightcoral;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+
+[v-cloak] {
+    display: none
 }
-a {
-  color: #42b983;
-}
+
 </style>
