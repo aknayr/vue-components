@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+
+    <new-student-form></new-student-form>
+    <student-table></student-table>
+    <student-message></student-message>
     
   </div>
 </template>
