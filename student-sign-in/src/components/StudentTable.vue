@@ -23,7 +23,8 @@
                     <student-row 
                       v-for="student in students" 
                       v-bind:student="student"
-                      v-bind:key="student.starID">
+                      v-bind:key="student.starID"
+                      v-on:student-arrived-or-left="arrivedOrLeft">
                     </student-row>
 
                   </table>

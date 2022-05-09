@@ -13,11 +13,11 @@
 export default {
     name: 'Student Row',
     props: {
-        student: Object
+        students: Object
     },
     methods: {
         arrivedOrLeft(student, present){
-            this.$emit('student-arrived-or-left', student, present)
+            this.$emit('student-arrived-or-left, student, present')
         }
     }
 }
