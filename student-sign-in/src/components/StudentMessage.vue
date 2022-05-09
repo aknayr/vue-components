@@ -2,9 +2,9 @@
   <div class="hello">
 
     <!-- template here -->
-    <div v-if="mostRecentStudent.name">
+    <div v-if="student.name">
 
-        <div class="alert alert-info" v-if="mostRecentStudent.present">
+        <div class="alert alert-info" v-if="student.present">
                 Welcome, {{ student.name }}
         </div>
 
