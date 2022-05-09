@@ -3,15 +3,16 @@
         <td> {{ student.name }} </td>
         <td> {{ student.starID }}</td>
         <td> 
-        <input type="checkbox" v-bind:checked="student.present" v-on:change="arrivedOrLeft(student, $event.target.checked)"> 
+        <input type="checkbox" v-on:change="arrivedOrLeft(student, $event.srcElement.checked)"> 
         </td>
+        <td> <img src="@/assets/delete_icon.png"> </td>
     </tr>
     
 </template>
 
 <script>
 export default {
-    name: 'Student Row',
+    name: 'StudentRow',
     props: {
         students: Object
     },
