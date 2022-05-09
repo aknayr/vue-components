@@ -1,7 +1,7 @@
 <template>
   <div id="app">
 
-    <new-student-form></new-student-form>
+    <new-student-form v-on:student-added="newStudentAdded"></new-student-form>
     <student-table></student-table>
     <student-message></student-message>
     
@@ -19,6 +19,17 @@ export default {
     NewStudentForm,
     StudentMessage,
     StudentTable
+  },
+  data () {
+    return {
+      students: []
+    }
+  },
+  methods: {
+    newStudentAdded (student) {
+      this.student.push(student)
+
+    }
   }
 }
 </script>

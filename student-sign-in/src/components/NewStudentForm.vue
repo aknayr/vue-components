@@ -1,6 +1,5 @@
 <template>
-  <div class="hello">
-
+  <div>
       <!-- template here -->
       <div class="alert alert-danger" v-show="errors.length">
               <ul>
@@ -13,12 +12,12 @@
           <h4 class="card-title">Add new student</h4>
 
           <div class="form-group">
-              <label for="name">Name</label>
+              <label for="name">Name:</label>
               <!-- TODO v-model newStudentName -->
               <input id="name" class="form-control" v-model.trim="newStudentName">
           </div>
           <div class="form-group">
-              <label for="starID">Star ID</label>
+              <label for="starID">Star ID:/label>
               <!-- TODO v-model newStarID -->
               <input id="starID" class="form-control" v-model.trim="newStarID">
           </div>
@@ -44,25 +43,27 @@ export default {
     addStudent() {
       this.errors = []
 
-      if (!this.newStudentName) 
-      {
-        this.errors.push('Student Name is a required field.')
-      } 
-      if (!this.newStarID) 
-      {
-        this.errors.push('StarID is a required field.')
-      }
-      if (this.errors.length == 0)
-      {
-        let student = { name: this.newStudentName, starID: this.newStarID, present:false }
-      }
+        if (!this.newStudentName) 
+        {
+          this.errors.push('Student Name is a required field.')
+        } 
+        if (!this.newStarID) 
+        {
+          this.errors.push('StarID is a required field.')
+        }
+        if (this.errors.length == 0)
+        {
+          let student = { name: this.newStudentName, starID: this.newStarID, present:false }
+        
         // TODO emit message to parent with new student info
+        this.$emit('student-added', student) 
 
         this.newStudentName = ''
         this.newStarID = ''
       }
     }
   }
+}
 
 </script>
 
