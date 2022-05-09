@@ -12,21 +12,34 @@
                     <!-- TODO create table rows 
                     Each row will have a checkbox, bound to the app's data 
                     When the checkbox is checked/unchecked, the student will be signed in/out -->
-                    <tr v-for="student in students" v-bind:key="student.starID" v-bind:class= "{ present: student.present, absent: !student.present }">
+                    <!--<tr v-for="student in students" v-bind:key="student.starID" v-bind:class= "{ present: student.present, absent: !student.present }">
                       <td> {{ student.name }} </td>
                       <td> {{ student.starID }}</td>
                       <td> 
                         <input type="checkbox" v-bind:checked="student.present" v-on:change="arrivedOrLeft(student, $event.target.checked)"> 
                       </td>
-                    </tr>
+                    </tr> -->
+
+                    <student-row 
+                      v-for="student in students" 
+                      v-bind:student="student"
+                      v-bind:key="student.starID">
+                    </student-row>
+
                   </table>
               </div>
         </div>
 </template>
 
 <script>
+
+import StudentRow from '@/components/StudentRow.vue'
+
 export default {
   name: 'StudentTable',
+  components: {
+    StudentRow
+  },
   emits: ['student-arrived-or-left'],
   props: {
     students: Array
