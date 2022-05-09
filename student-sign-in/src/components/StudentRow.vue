@@ -5,7 +5,7 @@
         <td> 
         <input type="checkbox" v-on:change="arrivedOrLeft(student, $event.srcElement.checked)"> 
         </td>
-        <td> <img src="@/assets/delete_icon.png"> </td>
+        <td> <img v-on:click="deleteStudent" src="@/assets/delete_icon.png"> </td>
     </tr>
     
 </template>
@@ -14,11 +14,14 @@
 export default {
     name: 'StudentRow',
     props: {
-        students: Object
+        student: Object
     },
     methods: {
         arrivedOrLeft(student, present){
-            this.$emit('student-arrived-or-left, student, present')
+            this.$emit('student-arrived-or-left', student, present)
+        },
+        deleteStudent() {
+            this.$emit('delete-student', this.student)
         }
     }
 }
