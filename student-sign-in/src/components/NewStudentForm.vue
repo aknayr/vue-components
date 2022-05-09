@@ -22,6 +22,7 @@
               <!-- TODO v-model newStarID -->
               <input id="starID" class="form-control" v-model.trim="newStarID">
           </div>
+          <button class="btn btn-primary" v-on:click="addStudent">Add</button>
       
     </div>
   </div>
@@ -42,20 +43,27 @@ export default {
   methods: {
     addStudent() {
       this.errors = []
-      if (this.newStudentName && this.newStarID) {
-        let student = { name: this.newStudentName, starID: this.newStarID, present: false}
-        this.students.push(student)
-        this.students.sort (function (student1, student2) {
-          return student1.name > student2.name ? 1 : -1
-        })
+
+      if (!this.newStudentName) 
+      {
+        this.errors.push('Student Name is a required field.')
+      } 
+      if (!this.newStarID) 
+      {
+        this.errors.push('StarID is a required field.')
+      }
+      if (this.errors.length == 0)
+      {
+        let student = { name: this.newStudentName, starID: this.newStarID, present:false }
+      }
+        // TODO emit message to parent with new student info
+
         this.newStudentName = ''
         this.newStarID = ''
-        } else {
-          this.errors.push ('Name and StarID are required fields.')
-        }
-      },
+      }
     }
   }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
